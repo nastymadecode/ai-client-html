@@ -110,7 +110,6 @@ if( $this->get( 'listProductTotal', 0 ) > 1 && $this->config( 'client/html/catal
 
 ?>
 <section class="aimeos catalog-list<?= $enc->attr( $classes ); ?>" data-jsonurl="<?= $enc->attr( $this->url( $optTarget, $optCntl, $optAction, [], [], $optConfig ) ); ?>">
-
 	<?php if( isset( $this->listErrorList ) ) : ?>
 		<ul class="error-list">
 			<?php foreach( (array) $this->listErrorList as $errmsg ) : ?>

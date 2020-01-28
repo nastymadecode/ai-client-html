@@ -15,8 +15,6 @@
 	url('//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/fonts/fontawesome-webfont.svg#fontawesomeregular') format('svg');
 }
 
-
-
 .aimeos .btn {
 	vertical-align: top;
 	font-weight: bold;
@@ -357,6 +355,27 @@
 	min-width: 3em;
 }
 
+/* Catalog compare */
+.catalog-compare table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.catalog-compare td, .catalog-compare th {
+    border: 1px solid #b0a060;
+    text-align: left;
+    padding: 8px;
+}
+
+.catalog-compare th .product-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.catalog-compare tr:nth-child(even) {
+    background-color: #f8f8f8;
+}
 
 /* Catalog filter */
 .catalog-filter {
@@ -1300,6 +1319,10 @@ html.no-js .catalog-filter-supplier:hover .supplier-lists {
 
 .catalog-detail .catalog-actions .actions-button-watch:before {
 	content: "\f06e";
+}
+
+.catalog-detail .catalog-actions .actions-button-compare:before {
+    content: "\f24e";
 }
 
 /* Product detail, basket section */

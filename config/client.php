@@ -10,6 +10,20 @@ return array(
 					),
 				),
 			),
+            'compare' => array(
+                'attributes' => array(
+                    'type-map' => array(
+                        'price',
+                        'color',
+                        'text',
+                        'interval',
+                        'width',
+                        'length',
+                        'sticker',
+                        'date',
+                    ),
+                ),
+            ),
 		),
 		'checkout' => array(
 			'standard' => array(

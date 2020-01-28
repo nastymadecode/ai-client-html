@@ -14,21 +14,25 @@
 $enc = $this->encoder();
 $prodid = $this->productItem->getId();
 
+$pinTarget = $this->config('client/html/catalog/session/pinned/url/target');
+$pinController = $this->config('client/html/catalog/session/pinned/url/controller', 'catalog');
+$pinAction = $this->config('client/html/catalog/session/pinned/url/action', 'detail');
+$pinConfig = $this->config('client/html/catalog/session/pinned/url/config', []);
 
-$pinTarget = $this->config( 'client/html/catalog/session/pinned/url/target' );
-$pinController = $this->config( 'client/html/catalog/session/pinned/url/controller', 'catalog' );
-$pinAction = $this->config( 'client/html/catalog/session/pinned/url/action', 'detail' );
-$pinConfig = $this->config( 'client/html/catalog/session/pinned/url/config', [] );
+$watchTarget = $this->config('client/html/account/watch/url/target');
+$watchController = $this->config('client/html/account/watch/url/controller', 'account');
+$watchAction = $this->config('client/html/account/watch/url/action', 'watch');
+$watchConfig = $this->config('client/html/account/watch/url/config', []);
 
-$watchTarget = $this->config( 'client/html/account/watch/url/target' );
-$watchController = $this->config( 'client/html/account/watch/url/controller', 'account' );
-$watchAction = $this->config( 'client/html/account/watch/url/action', 'watch' );
-$watchConfig = $this->config( 'client/html/account/watch/url/config', [] );
+$favTarget = $this->config('client/html/account/favorite/url/target');
+$favController = $this->config('client/html/account/favorite/url/controller', 'account');
+$favAction = $this->config('client/html/account/favorite/url/action', 'favorite');
+$favConfig = $this->config('client/html/account/favorite/url/config', []);
 
-$favTarget = $this->config( 'client/html/account/favorite/url/target' );
-$favController = $this->config( 'client/html/account/favorite/url/controller', 'account' );
-$favAction = $this->config( 'client/html/account/favorite/url/action', 'favorite' );
-$favConfig = $this->config( 'client/html/account/favorite/url/config', [] );
+$compTarget = $this->config('client/html/catalog/compare/url/target');
+$compController = $this->config('client/html/catalog/compare/url/controller', 'catalog');
+$compAction = $this->config('client/html/catalog/compare/url/action', 'compare');
+$compConfig = $this->config('client/html/catalog/compare/url/config', []);
 
 
 /** client/html/catalog/actions/list
@@ -48,21 +52,20 @@ $favConfig = $this->config( 'client/html/account/favorite/url/config', [] );
  * @category User
  * @category Developer
  */
-$list = $this->config( 'client/html/catalog/actions/list', array( 'pin', 'watch', 'favorite' ) );
+$list = $this->config('client/html/catalog/actions/list', array('pin', 'watch', 'favorite', 'compare'));
 
 $urls = array(
-	'pin' => $this->url( $pinTarget, $pinController, $pinAction, array( 'pin_action' => 'add', 'pin_id' => $prodid, 'd_name' => $this->productItem->getName( 'url' ) ), $pinConfig ),
-	'watch' => $this->url( $watchTarget, $watchController, $watchAction, array( 'wat_action' => 'add', 'wat_id' => $prodid, 'd_name' => $this->productItem->getName( 'url' ) ), $watchConfig ),
-	'favorite' => $this->url( $favTarget, $favController, $favAction, array( 'fav_action' => 'add', 'fav_id' => $prodid, 'd_name' => $this->productItem->getName( 'url' ) ), $favConfig ),
+    'pin' => $this->url($pinTarget, $pinController, $pinAction, array('pin_action' => 'add', 'pin_id' => $prodid, 'd_name' => $this->productItem->getName('url')), $pinConfig),
+    'watch' => $this->url($watchTarget, $watchController, $watchAction, array('wat_action' => 'add', 'wat_id' => $prodid, 'd_name' => $this->productItem->getName('url')), $watchConfig),
+    'favorite' => $this->url($favTarget, $favController, $favAction, array('fav_action' => 'add', 'fav_id' => $prodid, 'd_name' => $this->productItem->getName('url')), $favConfig),
+    'compare' => $this->url($compTarget, $compController, $compAction, ['comp_action' => 'add', 'comp_id' => $prodid, 'd_name' => $this->productItem->getName('url')], $compConfig)
 );
-
 
 ?>
 <div class="catalog-actions">
-	<?php foreach( $list as $entry ) : ?>
-		<?php if( isset( $urls[$entry] ) ) : ?>
-			<a class="actions-button actions-button-<?= $enc->attr( $entry ); ?>" href="<?= $enc->attr( $urls[$entry] ); ?>" title="<?= $enc->attr( $this->translate( 'client/code', $entry ) ); ?>"></a>
-
-		<?php endif; ?>
-	<?php endforeach; ?>
+    <?php foreach ($list as $entry) : ?>
+        <?php if (isset($urls[$entry])) : ?>
+            <a class="actions-button actions-button-<?= $enc->attr($entry); ?>" href="<?= $enc->attr($urls[$entry]); ?>" title="<?= $enc->attr($this->translate('client/code', $entry)); ?>"></a>+
+        <?php endif; ?>
+    <?php endforeach; ?>
 </div>
